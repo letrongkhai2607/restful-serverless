@@ -21,14 +21,14 @@ jobs:
           python-version: 3.13
 
       # Package application (zip for Lambda or build Docker image)
-      - name: Package Lambda
-        run: |
-          mkdir package
-          cp -r main.py ./package/
-          cd package
-          pip3 install -r requirements.txt
-          zip -r ../restful-notes.zip .
-          cd ..
+      # - name: Package Lambda
+      #   run: |
+      #     mkdir package
+      #     cp -r main.py ./package/
+      #     cd package
+      #     pip3 install -r requirements.txt
+      #     zip -r ../restful-notes.zip .
+      #     cd ..
 
       # Configure AWS CLI
       - name: Configure AWS credentials
