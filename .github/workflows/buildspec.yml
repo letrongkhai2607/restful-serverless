@@ -23,7 +23,6 @@ jobs:
       # Package application (zip for Lambda or build Docker image)
       - name: Package Lambda
         run: |
-          cd app
           mkdir package
           cp -r main.py ./package/
           cd package
@@ -47,6 +46,6 @@ jobs:
       #       --zip-file fileb://restful-notes.zip
 
       # Clean up package folder
-      - name: Remove package folder
-        run: |
-          rm -rf package
+      # - name: Remove package folder
+      #   run: |
+      #     rm -rf package
