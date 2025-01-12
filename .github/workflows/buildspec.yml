@@ -27,8 +27,8 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: |
-          pip install --no-cache-dir -r requirements.txt
-          pip install serverless-python-requirements
+          pip3 install --no-cache-dir -r requirements.txt
+          pip3 install serverless-python-requirements
 
       # Deploy to AWS Lambda
       - name: Deploy to AWS
