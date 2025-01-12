@@ -28,6 +28,7 @@ jobs:
       # Package application (zip for Lambda or build Docker image)
       - name: Package Lambda
         run: |
+          cd app
           mkdir package
           cp -r main.py ./package/
           cd package
