@@ -20,11 +20,6 @@ jobs:
         with:
           python-version: 3.13
 
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          pip3 install -r requirements.txt
-
       # Package application (zip for Lambda or build Docker image)
       - name: Package Lambda
         run: |
@@ -32,6 +27,7 @@ jobs:
           mkdir package
           cp -r main.py ./package/
           cd package
+          pip3 install -r requirements.txt
           zip -r ../restful-notes.zip .
           cd ..
 
@@ -44,11 +40,11 @@ jobs:
           aws-region: ap-southeast-1
 
       # Deploy to AWS Lambda
-      - name: Deploy Lambda Function
-        run: |
-          aws lambda update-function-code \
-            --function-name restful-notes \
-            --zip-file fileb://restful-notes.zip
+      # - name: Deploy Lambda Function
+      #   run: |
+      #     aws lambda update-function-code \
+      #       --function-name restful-notes \
+      #       --zip-file fileb://restful-notes.zip
 
       # Clean up package folder
       - name: Remove package folder
