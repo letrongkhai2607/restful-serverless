@@ -1,0 +1,33 @@
+service: fastapi-lambda-service
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  environment:
+    DYNAMODB_TABLE: my-dynamodb-table
+
+functions:
+  app:
+    handler: app.main.lambda_handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: "{proxy+}"
+          method: ANY
+
+resources:
+  Resources:
+    MyDynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: my-dynamodb-table
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
