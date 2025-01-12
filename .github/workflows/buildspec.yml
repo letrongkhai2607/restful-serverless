@@ -28,7 +28,6 @@ jobs:
       # Package application (zip for Lambda or build Docker image)
       - name: Package Lambda
         run: |
-          cd app
           mkdir package
           cp -r main.py ./package/
           cd package
@@ -44,13 +43,13 @@ jobs:
           aws-region: ap-southeast-1
 
       # Deploy to AWS Lambda
-      - name: Deploy Lambda Function
-        run: |
-          aws lambda update-function-code \
-            --function-name restful-notes \
-            --zip-file fileb://restful-notes.zip
+      # - name: Deploy Lambda Function
+      #   run: |
+      #     aws lambda update-function-code \
+      #       --function-name restful-notes \
+      #       --zip-file fileb://restful-notes.zip
 
       # Clean up package folder
-      - name: Remove package folder
-        run: |
-          rm -rf package
+      # - name: Remove package folder
+      #   run: |
+      #     rm -rf package
