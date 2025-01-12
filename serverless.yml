@@ -3,9 +3,9 @@ service: fastapi-lambda-service
 provider:
   name: aws
   runtime: python3.9
-  region: us-east-1
+  region: ap-southeast-1
   environment:
-    DYNAMODB_TABLE: my-dynamodb-table
+    DYNAMODB_TABLE: restful-notes
 
 functions:
   app:
@@ -23,7 +23,7 @@ resources:
     MyDynamoDBTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: my-dynamodb-table
+        TableName: restful-notes
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
